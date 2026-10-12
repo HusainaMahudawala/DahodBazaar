@@ -38,10 +38,19 @@ searchForm.addEventListener("submit", (event) => {
     searchBusinesses(searchInput.value);
 });
 
+
 document.querySelectorAll("[data-search]").forEach((button) => {
     button.addEventListener("click", () => {
         const term = button.dataset.search;
-        searchInput.value = term;
-        searchBusinesses(term);
+
+        if (button.classList.contains("outline-button")) {
+            // Explore button: open the matching business listings.
+            searchInput.value = term;
+            searchBusinesses(term);
+        } else {
+            // Other search buttons: keep the existing search behavior.
+            searchInput.value = term;
+            searchBusinesses(term);
+        }
     });
 });

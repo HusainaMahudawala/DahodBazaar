@@ -126,7 +126,7 @@ button, a {
             rgba(244, 248, 255, 0.25),
             rgba(244, 248, 255, 0.35)
         ),
-        url("images/dahod-city.jpg") center / cover no-repeat;
+        url("dahod-city.jpg") center / cover no-repeat;
 
     min-height: 430px;
     padding: 75px 20px;
