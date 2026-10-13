@@ -1,56 +1,162 @@
 
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.getElementById("searchInput");
-const businessCards = document.querySelectorAll(".business-card");
-const searchMessage = document.getElementById("searchMessage");
+document.addEventListener("DOMContentLoaded", () => {
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("searchInput");
+    const searchMessage = document.getElementById("searchMessage");
 
-function searchBusinesses(query) {
-    const term = query.trim().toLowerCase();
-    let visibleCount = 0;
+    const grid = document.getElementById("businessGrid");
+    const previousButton = document.getElementById("prevBusinesses");
+    const nextButton = document.getElementById("nextBusinesses");
+    const status = document.getElementById("carouselStatus");
 
-    businessCards.forEach((card) => {
-        const category = card.dataset.category.toLowerCase();
-        const content = card.textContent.toLowerCase();
+    if (!grid) return;
 
-        const matches =
-            !term ||
-            category.includes(term) ||
-            content.includes(term);
+    const cards = Array.from(grid.querySelectorAll(".business-card"));
 
-        card.hidden = !matches;
+    let currentPage = 0;
+    let visibleCount = 4;
+    let filteredCards = [...cards];
 
-        if (matches) {
-            visibleCount++;
-        }
-    });
+    // Number of cards shown according to screen width
+function updateVisibleCount() {
+    if (window.innerWidth <= 600) {
+        visibleCount = 1;
+    } else if (window.innerWidth <= 1000) {
+        visibleCount = 2;
+    } else {
+        visibleCount = 3;
+    }
 
-    searchMessage.textContent = visibleCount
-        ? `${visibleCount} sample listing(s) found.`
-        : "No matching sample listings. Try Doctors, Restaurants or Salons.";
-
-    document.getElementById("businesses").scrollIntoView({
-        behavior: "smooth"
-    });
+    currentPage = 0;
+    renderCards();
 }
 
-searchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    searchBusinesses(searchInput.value);
-});
+    // Display the current carousel page
+    function renderCards() {
+        const totalPages = Math.max(
+            1,
+            Math.ceil(filteredCards.length / visibleCount)
+        );
 
+        currentPage = Math.min(currentPage, totalPages - 1);
 
-document.querySelectorAll("[data-search]").forEach((button) => {
-    button.addEventListener("click", () => {
-        const term = button.dataset.search;
+        cards.forEach(card => {
+            card.hidden = true;
+        });
 
-        if (button.classList.contains("outline-button")) {
-            // Explore button: open the matching business listings.
-            searchInput.value = term;
-            searchBusinesses(term);
-        } else {
-            // Other search buttons: keep the existing search behavior.
-            searchInput.value = term;
-            searchBusinesses(term);
+        const start = currentPage * visibleCount;
+        const currentCards = filteredCards.slice(
+            start,
+            start + visibleCount
+        );
+
+        currentCards.forEach(card => {
+            card.hidden = false;
+        });
+
+        if (previousButton) {
+            previousButton.disabled =
+                currentPage === 0 || filteredCards.length === 0;
         }
+
+        if (nextButton) {
+            nextButton.disabled =
+                currentPage >= totalPages - 1 ||
+                filteredCards.length === 0;
+        }
+
+        if (status) {
+            status.textContent = filteredCards.length
+                ? `Showing ${start + 1}–${Math.min(
+                    start + visibleCount,
+                    filteredCards.length
+                )} of ${filteredCards.length} businesses`
+                : "No businesses found.";
+        }
+
+        if (searchMessage) {
+            searchMessage.textContent = filteredCards.length
+                ? `${filteredCards.length} sample listing(s) found.`
+                : "No matching sample listings. Try another search.";
+        }
+    }
+
+    // Search and filter the business cards
+    function searchBusinesses(query) {
+        const term = query.trim().toLowerCase();
+
+        filteredCards = cards.filter(card => {
+            const category = (
+                card.dataset.category || ""
+            ).toLowerCase();
+
+            const content = card.textContent.toLowerCase();
+
+            return (
+                !term ||
+                category.includes(term) ||
+                content.includes(term)
+            );
+        });
+
+        currentPage = 0;
+        renderCards();
+    }
+
+    // Search form
+    if (searchForm && searchInput) {
+        searchForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            searchBusinesses(searchInput.value);
+
+            document.getElementById("businesses")
+                ?.scrollIntoView({ behavior: "smooth" });
+        });
+    }
+
+    // Category buttons, popular searches and Explore buttons
+    document.querySelectorAll("[data-search]").forEach(button => {
+        button.addEventListener("click", () => {
+            const term = button.dataset.search || "";
+
+            if (searchInput) {
+                searchInput.value = term;
+            }
+
+            searchBusinesses(term);
+
+            document.getElementById("businesses")
+                ?.scrollIntoView({ behavior: "smooth" });
+        });
     });
+
+    // Previous page
+    if (previousButton) {
+        previousButton.addEventListener("click", () => {
+            if (currentPage > 0) {
+                currentPage--;
+                renderCards();
+            }
+        });
+    }
+
+    // Next page
+    if (nextButton) {
+        nextButton.addEventListener("click", () => {
+            const totalPages = Math.ceil(
+                filteredCards.length / visibleCount
+            );
+
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                renderCards();
+            }
+        });
+    }
+
+    // Update layout when the browser is resized
+    window.addEventListener("resize", updateVisibleCount);
+
+    updateVisibleCount();
 });

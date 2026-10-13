@@ -527,4 +527,323 @@ button, a {
     }
     
 }
+/* Additional business listing details */
+.business-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0;
+    color: #f59e0b;
+    font-size: 14px;
+    font-weight: 700;
+}
 
+.business-rating span {
+    color: #777;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.business-info > p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 9px 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.business-info > p i {
+    margin-top: 4px;
+    min-width: 14px;
+}
+
+.business-description {
+    color: #626b78;
+    font-size: 13px;
+}
+
+.business-info .sample-label {
+    color: #7b8491;
+    font-size: 11px;
+}
+
+.business-card {
+    height: 100%;
+}
+
+.business-info {
+    overflow-wrap: anywhere;
+}
+
+
+/* Three-card carousel */
+.business-carousel {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+}
+
+.business-carousel #businessGrid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px;
+    width: 100%;
+    min-width: 0;
+}
+
+#businessGrid .business-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* JavaScript hides cards not on the current page */
+#businessGrid .business-card[hidden] {
+    display: none !important;
+}
+
+.carousel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #dbe2ee;
+    border-radius: 50%;
+    background: #fff;
+    color: #17243b;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.carousel-button:hover:not(:disabled) {
+    background: #245df5;
+    color: white;
+}
+
+.carousel-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.carousel-status {
+    margin-top: 18px;
+    text-align: center;
+    color: #737b89;
+    font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+    .business-carousel #businessGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .business-carousel {
+        grid-template-columns: 32px minmax(0, 1fr) 32px;
+        gap: 6px;
+    }
+
+    .business-carousel #businessGrid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .carousel-button {
+        width: 32px;
+        height: 32px;
+    }
+}
+/* =========================================
+   BUSINESS DETAILS PAGE
+========================================= */
+
+.details-page {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 24px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #245df5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.details-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+}
+
+.details-banner {
+    padding: 42px 32px;
+    background: #eaf0ff;
+    text-align: center;
+}
+
+.details-banner > i {
+    font-size: 54px;
+    color: #245df5;
+}
+
+.details-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 14px;
+    background: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.details-content {
+    padding: 32px;
+}
+
+.details-content h1 {
+    margin-top: 10px;
+    font-size: clamp(26px, 4vw, 36px);
+    overflow-wrap: anywhere;
+}
+
+.details-content h2 {
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+.details-description {
+    color: #687386;
+    line-height: 1.8;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 28px 0;
+}
+
+.detail-item {
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.detail-item > i {
+    margin-right: 8px;
+    color: #245df5;
+}
+
+.detail-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #687386;
+    font-size: 13px;
+}
+
+.service-list {
+    padding-left: 22px;
+    color: #475569;
+    line-height: 2;
+}
+
+.details-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.details-button {
+    display: inline-block;
+    padding: 12px 18px;
+    border: 1px solid #245df5;
+    border-radius: 10px;
+    background: #245df5;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.details-button:hover {
+    background: #1748d0;
+}
+
+.details-button.secondary {
+    border-color: #dbe2ee;
+    background: #fff;
+    color: #17243b;
+}
+
+.details-button.secondary:hover {
+    background: #f1f5f9;
+}
+
+.demo-note {
+    margin-top: 22px;
+    color: #737b89;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.not-found {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.not-found > i {
+    color: #245df5;
+}
+
+@media (max-width: 650px) {
+    .details-page {
+        margin: 25px auto;
+        padding: 0 16px;
+    }
+
+    .details-content {
+        padding: 22px;
+    }
+
+    .details-banner {
+        padding: 32px 20px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Business action buttons */
+.business-action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 22px;
+    min-height: 46px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}

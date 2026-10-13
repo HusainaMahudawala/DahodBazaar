@@ -179,76 +179,338 @@ $pageTitle = "Dahod Nearby | Local Business Directory";
                     <p>Sample listings to preview your website.</p>
                 </div>
             </div>
-
-            <div class="business-grid" id="businessGrid">
-
                
 <?php
 $businesses = [
+    // RESTAURANTS
     [
+        "id" => "prabhuan-restaurant",
         "category" => "Restaurants",
         "imageClass" => "food-image",
         "icon" => "fa-utensils",
         "tag" => "Food & Dining",
-        "name" => "Local Restaurant",
+        "name" => "Prabhuan Restaurant",
         "location" => "Dahod, Gujarat",
-        "searchTerm" => "Restaurants"
+        "searchTerm" => "Restaurants",
+        "description" => "A sample restaurant listing for meals, family dining and food lovers.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 10:00 AM – 10:00 PM",
+        "rating" => "4.5",
+        "reviews" => "120"
     ],
     [
-        "category" => "Salons",
-        "imageClass" => "salon-image",
-        "icon" => "fa-scissors",
-        "tag" => "Beauty & Care",
-        "name" => "Local Salon",
+        "id" => "dahod-family-food-corner",
+        "category" => "Restaurants",
+        "imageClass" => "food-image",
+        "icon" => "fa-burger",
+        "tag" => "Fast Food",
+        "name" => "Dahod Family Food Corner",
         "location" => "Dahod, Gujarat",
-        "searchTerm" => "Salons"
+        "searchTerm" => "Restaurants",
+        "description" => "Sample listing for snacks, fast food and casual family meals.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 11:00 AM – 11:00 PM",
+        "rating" => "4.2",
+        "reviews" => "85"
     ],
+
+    // DOCTORS AND CLINICS
     [
+        "id" => "dahod-general-clinic",
         "category" => "Doctors",
         "imageClass" => "doctor-image",
         "icon" => "fa-user-doctor",
         "tag" => "Healthcare",
-        "name" => "Local Clinic",
+        "name" => "Dahod General Clinic",
         "location" => "Dahod, Gujarat",
-        "searchTerm" => "Doctors"
+        "searchTerm" => "Doctors",
+        "description" => "Demo listing for general medical consultation and primary healthcare.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 9:00 AM – 1:00 PM, 5:00 PM – 8:00 PM",
+        "rating" => "4.6",
+        "reviews" => "95"
+    ],
+    [
+        "id" => "smile-dental-care",
+        "category" => "Doctors",
+        "imageClass" => "doctor-image",
+        "icon" => "fa-tooth",
+        "tag" => "Dental Care",
+        "name" => "Smile Dental Care",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Doctors",
+        "description" => "Sample dental clinic listing for dental checkups and oral care.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 10:00 AM – 7:00 PM",
+        "rating" => "4.4",
+        "reviews" => "68"
+    ],
+
+    // SALONS
+    [
+        "id" => "mirror-salon",
+        "category" => "Salons",
+        "imageClass" => "salon-image",
+        "icon" => "fa-scissors",
+        "tag" => "Beauty & Care",
+        "name" => "Mirror Salon",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Salons",
+        "description" => "Sample salon listing for haircuts, styling and grooming services.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 10:00 AM – 9:00 PM",
+        "rating" => "4.3",
+        "reviews" => "72"
+    ],
+    [
+        "id" => "glow-beauty-studio",
+        "category" => "Salons",
+        "imageClass" => "salon-image",
+        "icon" => "fa-spa",
+        "tag" => "Beauty Services",
+        "name" => "Glow Beauty Studio",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Salons",
+        "description" => "Demo listing for beauty treatments, makeup and personal care.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 10:00 AM – 8:00 PM",
+        "rating" => "4.1",
+        "reviews" => "54"
+    ],
+
+    // SHOPPING
+    [
+        "id" => "shankar-mega-store",
+        "category" => "Shopping",
+        "imageClass" => "shopping-image",
+        "icon" => "fa-bag-shopping",
+        "tag" => "Supermarket",
+        "name" => "Shankar Mega Store",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Shopping",
+        "description" => "Sample supermarket listing for groceries, household items and daily needs.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 9:00 AM – 9:00 PM",
+        "rating" => "4.5",
+        "reviews" => "110"
+    ],
+    [
+        "id" => "city-fashion-store",
+        "category" => "Shopping",
+        "imageClass" => "shopping-image",
+        "icon" => "fa-shirt",
+        "tag" => "Fashion",
+        "name" => "City Fashion Store",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Shopping",
+        "description" => "Demo clothing store listing for everyday fashion and accessories.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 10:00 AM – 9:00 PM",
+        "rating" => "4.0",
+        "reviews" => "47"
+    ],
+
+    // EDUCATION
+    [
+        "id" => "jamali-english-school",
+        "category" => "Education",
+        "imageClass" => "education-image",
+        "icon" => "fa-graduation-cap",
+        "tag" => "School",
+        "name" => "Jamali English School",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Education",
+        "description" => "Sample school-directory entry for an English-medium school.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 8:00 AM – 2:00 PM",
+        "rating" => "4.4",
+        "reviews" => "90"
+    ],
+    [
+        "id" => "st-marys-school",
+        "category" => "Education",
+        "imageClass" => "education-image",
+        "icon" => "fa-school",
+        "tag" => "School",
+        "name" => "St. Mary's School",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Education",
+        "description" => "Sample education-directory entry for a school.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 8:00 AM – 2:00 PM",
+        "rating" => "4.3",
+        "reviews" => "76"
+    ],
+
+    // HOTELS
+    [
+        "id" => "prabhuan-hotel",
+        "category" => "Hotels",
+        "imageClass" => "hotel-image",
+        "icon" => "fa-hotel",
+        "tag" => "Accommodation",
+        "name" => "Prabhuan Hotel",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Hotels",
+        "description" => "Sample hotel-directory listing for visitors looking for accommodation.",
+        "phone" => "0000000000",
+        "hours" => "Demo listing: Contact details to be verified",
+        "rating" => "4.2",
+        "reviews" => "88"
+    ],
+    [
+        "id" => "dahod-comfort-stay",
+        "category" => "Hotels",
+        "imageClass" => "hotel-image",
+        "icon" => "fa-bed",
+        "tag" => "Stay & Travel",
+        "name" => "Dahod Comfort Stay",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Hotels",
+        "description" => "Demo accommodation listing for travellers and families.",
+        "phone" => "0000000000",
+        "hours" => "Demo listing: Contact details to be verified",
+        "rating" => "4.1",
+        "reviews" => "61"
+    ],
+
+    // ELECTRONICS
+    [
+        "id" => "dahod-electronics-store",
+        "category" => "Electronics",
+        "imageClass" => "electronics-image",
+        "icon" => "fa-mobile-screen-button",
+        "tag" => "Electronics",
+        "name" => "Dahod Electronics Store",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Electronics",
+        "description" => "Sample shop listing for electronic devices and household appliances.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 10:00 AM – 8:30 PM",
+        "rating" => "4.3",
+        "reviews" => "69"
+    ],
+    [
+        "id" => "smart-mobile-repair",
+        "category" => "Electronics",
+        "imageClass" => "electronics-image",
+        "icon" => "fa-screwdriver-wrench",
+        "tag" => "Repair Services",
+        "name" => "Smart Mobile Repair",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Electronics",
+        "description" => "Demo listing for mobile troubleshooting and electronic repair services.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 10:00 AM – 8:00 PM",
+        "rating" => "4.0",
+        "reviews" => "43"
+    ],
+
+    // HOME SERVICES
+    [
+        "id" => "dahod-plumbing-services",
+        "category" => "Home Services",
+        "imageClass" => "home-image",
+        "icon" => "fa-wrench",
+        "tag" => "Plumbing",
+        "name" => "Dahod Plumbing Services",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Home Services",
+        "description" => "Sample service listing for household plumbing and maintenance.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 9:00 AM – 7:00 PM",
+        "rating" => "4.2",
+        "reviews" => "38"
+    ],
+    [
+        "id" => "reliable-electrician-services",
+        "category" => "Home Services",
+        "imageClass" => "home-image",
+        "icon" => "fa-bolt",
+        "tag" => "Electrical Services",
+        "name" => "Reliable Electrician Services",
+        "location" => "Dahod, Gujarat",
+        "searchTerm" => "Home Services",
+        "description" => "Demo listing for home electrical repairs and maintenance.",
+        "phone" => "0000000000",
+        "hours" => "Demo hours: 9:00 AM – 7:00 PM",
+        "rating" => "4.4",
+        "reviews" => "51"
     ]
 ];
 ?>
 
-<?php foreach ($businesses as $business): ?>
-    <article class="business-card"
-             data-category="<?= htmlspecialchars($business['category'], ENT_QUOTES, 'UTF-8') ?>">
+<div class="business-carousel">
+    <button type="button"
+            class="carousel-button"
+            id="prevBusinesses"
+            aria-label="Previous businesses">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
 
-        <div class="business-image <?= htmlspecialchars($business['imageClass'], ENT_QUOTES, 'UTF-8') ?>">
-            <i class="fa-solid <?= htmlspecialchars($business['icon'], ENT_QUOTES, 'UTF-8') ?>"></i>
-            <span class="listing-tag">
-                <?= htmlspecialchars($business['tag'], ENT_QUOTES, 'UTF-8') ?>
-            </span>
-        </div>
+    <div class="business-grid" id="businessGrid">
+        <?php foreach ($businesses as $id => $business): ?>
+            <article class="business-card"
+                     data-category="<?= htmlspecialchars($business['category'], ENT_QUOTES, 'UTF-8') ?>">
 
-        <div class="business-info">
-            <h3><?= htmlspecialchars($business['name'], ENT_QUOTES, 'UTF-8') ?></h3>
+                <div class="business-image <?= htmlspecialchars($business['imageClass'], ENT_QUOTES, 'UTF-8') ?>">
+                    <i class="fa-solid <?= htmlspecialchars($business['icon'], ENT_QUOTES, 'UTF-8') ?>"></i>
+                    <span class="listing-tag">
+                        <?= htmlspecialchars($business['tag'], ENT_QUOTES, 'UTF-8') ?>
+                    </span>
+                </div>
 
-            <p>
-                <i class="fa-solid fa-location-dot"></i>
-                <?= htmlspecialchars($business['location'], ENT_QUOTES, 'UTF-8') ?>
-            </p>
+                <div class="business-info">
+                    <h3><?= htmlspecialchars($business['name'], ENT_QUOTES, 'UTF-8') ?></h3>
 
-            <div class="business-actions">
-                <span class="sample-label">Sample listing</span>
+                    <div class="business-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <?= htmlspecialchars($business['rating'], ENT_QUOTES, 'UTF-8') ?>
+                        <span>(<?= htmlspecialchars($business['reviews'], ENT_QUOTES, 'UTF-8') ?> demo reviews)</span>
+                    </div>
 
-                <button type="button"
-                        class="outline-button"
-                        data-search="<?= htmlspecialchars($business['searchTerm'], ENT_QUOTES, 'UTF-8') ?>">
-                    Explore
-                </button>
-            </div>
-        </div>
-    </article>
-<?php endforeach; ?>
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <?= htmlspecialchars($business['location'], ENT_QUOTES, 'UTF-8') ?>
+                    </p>
 
+                    <p>
+                        <i class="fa-solid fa-phone"></i>
+                        <?= htmlspecialchars($business['phone'], ENT_QUOTES, 'UTF-8') ?>
+                    </p>
 
-            </div>
+                    <p>
+                        <i class="fa-regular fa-clock"></i>
+                        <?= htmlspecialchars($business['hours'], ENT_QUOTES, 'UTF-8') ?>
+                    </p>
+
+                    <p class="business-description">
+                        <?= htmlspecialchars($business['description'], ENT_QUOTES, 'UTF-8') ?>
+                    </p>
+
+                    <div class="business-actions">
+                        <span class="sample-label">Sample listing</span>
+                      <a
+                       href="business.php?id=<?= urlencode($business['id']) ?>"class="outline-button">
+                       Explore
+                      </a>
+                    </div>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
+
+    <button type="button"
+            class="carousel-button"
+            id="nextBusinesses"
+            aria-label="Next businesses">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+</div>
+
+<p id="carouselStatus" class="carousel-status" aria-live="polite"></p>
+<p id="searchMessage" class="search-message" aria-live="polite"></p>
+
 
             <p id="searchMessage" class="search-message" aria-live="polite"></p>
         </section>
