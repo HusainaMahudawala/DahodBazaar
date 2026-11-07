@@ -1,249 +1,66 @@
 <?php
 
-$businesses = [
-    [
-        "id" => "prabhuan-restaurant",
-        "category" => "Restaurants",
-        "name" => "Prabhuan Restaurant",
-        "tag" => "Food & Dining",
-        "icon" => "fa-utensils",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 10:00 AM – 10:00 PM",
-        "rating" => "4.5",
-        "reviews" => "120",
-        'services' => ['Dine-In', 'Family Dining', 'Gujarati Food', 'Takeaway'],
-        "description" => "A sample restaurant listing for meals, family dining and food lovers."
-    ],
-    [
-        "id" => "dahod-family-food-corner",
-        "category" => "Restaurants",
-        "name" => "Dahod Family Food Corner",
-        "tag" => "Fast Food",
-        "icon" => "fa-burger",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 11:00 AM – 11:00 PM",
-        "rating" => "4.2",
-        "reviews" => "85",
-        'services' => ['Fast Food', 'Casual Dining', 'Family Meals', 'Takeaway'],
-        "description" => "Sample listing for snacks, fast food and casual family meals."
-    ],
-    [
-        "id" => "dahod-general-clinic",
-        "category" => "Doctors",
-        "name" => "Dahod General Clinic",
-        "tag" => "Healthcare",
-        "icon" => "fa-user-doctor",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 9:00 AM – 1:00 PM, 5:00 PM – 8:00 PM",
-        "rating" => "4.6",
-        "reviews" => "95",
-        'services' => ['General Checkup', 'Primary Care', 'Consultation', 'Treatment'],
-        "description" => "Demo listing for general medical consultation and primary healthcare."
-    ],
-    [
-        "id" => "smile-dental-care",
-        "category" => "Doctors",
-        "name" => "Smile Dental Care",
-        "tag" => "Dental Care",
-        "icon" => "fa-tooth",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 10:00 AM – 7:00 PM",
-        "rating" => "4.4",
-        "reviews" => "68",
-        'services' => ['Dental Checkup', 'Teeth Cleaning', 'Tooth Extraction', 'Cosmetic Dentistry'],
-        "description" => "Sample dental clinic listing for dental checkups and oral care."
-    ],
-    [
-        "id" => "mirror-salon",
-        "category" => "Salons",
-        "name" => "Mirror Salon",
-        "tag" => "Beauty & Care",
-        "icon" => "fa-scissors",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 10:00 AM – 9:00 PM",
-        "rating" => "4.3",
-        "reviews" => "72",
-        'services' => ['Haircuts', 'Styling', 'Grooming'],
-        "description" => "Sample salon listing for haircuts, styling and grooming services."
-    ],
-    [
-        "id" => "glow-beauty-studio",
-        "category" => "Salons",
-        "name" => "Glow Beauty Studio",
-        "tag" => "Beauty Services",
-        "icon" => "fa-spa",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 10:00 AM – 8:00 PM",
-        "rating" => "4.1",
-        "reviews" => "54",
-        'services' => ['Facials', 'Makeup', 'Personal Care'],
-        "description" => "Demo listing for beauty treatments, makeup and personal care."
-    ],
-    [
-        "id" => "shankar-mega-store",
-        "category" => "Shopping",
-        "name" => "Shankar Mega Store",
-        "tag" => "Supermarket",
-        "icon" => "fa-bag-shopping",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 9:00 AM – 9:00 PM",
-        "rating" => "4.5",
-        "reviews" => "110",
-        'services' => ['Groceries', 'Household Items', 'Daily Needs'],
-        "description" => "Sample supermarket listing for groceries, household items and daily needs."
-    ],
-    [
-        "id" => "city-fashion-store",
-        "category" => "Shopping",
-        "name" => "City Fashion Store",
-        "tag" => "Fashion",
-        "icon" => "fa-shirt",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 10:00 AM – 9:00 PM",
-        "rating" => "4.0",
-        "reviews" => "47",
-        'services' => ['Clothing', 'Accessories', 'Footwear'],
-        "description" => "Demo clothing store listing for everyday fashion and accessories."
-    ],
-    [
-        "id" => "jamali-english-school",
-        "category" => "Education",
-        "name" => "Jamali English School",
-        "tag" => "School",
-        "icon" => "fa-graduation-cap",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 8:00 AM – 2:00 PM",
-        "rating" => "4.4",
-        "reviews" => "90",
-        'services' => ['Primary Education', 'Secondary Education', 'Higher Education', 'Extracurricular Activities'],
-        "description" => "Sample school-directory entry for an English-medium school."
-    ],
-    [
-        "id" => "st-marys-school",
-        "category" => "Education",
-        "name" => "St. Mary's School",
-        "tag" => "School",
-        "icon" => "fa-school",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 8:00 AM – 2:00 PM",
-        "rating" => "4.3",
-        "reviews" => "76",
-        'services' => ['Primary Education', 'Secondary Education', 'Higher Education', 'Extracurricular Activities'],
-        "description" => "Sample education-directory entry for a school."
-    ],
-    [
-        "id" => "prabhuan-hotel",
-        "category" => "Hotels",
-        "name" => "Prabhuan Hotel",
-        "tag" => "Accommodation",
-        "icon" => "fa-hotel",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo details: Please verify before visiting",
-        "rating" => "4.2",
-        "reviews" => "88",
-        'services' => ['Single Rooms', 'Double Rooms', 'Family Rooms', 'Facilities'],
-        "description" => "Sample hotel-directory listing for visitors looking for accommodation."
-    ],
-    [
-        "id" => "dahod-comfort-stay",
-        "category" => "Hotels",
-        "name" => "Dahod Comfort Stay",
-        "tag" => "Stay & Travel",
-        "icon" => "fa-bed",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo details: Please verify before visiting",
-        "rating" => "4.1",
-        "reviews" => "61",
-        'services' => ['Single Rooms', 'Double Rooms', 'Family Rooms', 'Facilities'],
-        "description" => "Demo accommodation listing for travellers and families."
-    ],
-    [
-        "id" => "dahod-electronics-store",
-        "category" => "Electronics",
-        "name" => "Dahod Electronics Store",
-        "tag" => "Electronics",
-        "icon" => "fa-mobile-screen-button",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 10:00 AM – 8:30 PM",
-        "rating" => "4.3",
-        "reviews" => "69",
-        'services' => ['Mobile Phones', 'Laptops', 'Household Appliances', 'Electronic Accessories'],
-        "description" => "Sample shop listing for electronic devices and household appliances."
-    ],
-    [
-        "id" => "smart-mobile-repair",
-        "category" => "Electronics",
-        "name" => "Smart Mobile Repair",
-        "tag" => "Repair Services",
-        "icon" => "fa-screwdriver-wrench",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 10:00 AM – 8:00 PM",
-        "rating" => "4.0",
-        "reviews" => "43",
-        'services' => ['Mobile Repair', 'Tablet Repair', 'Laptop Repair', 'Electronic Troubleshooting'],
-        "description" => "Demo listing for mobile troubleshooting and electronic repair services."
-    ],
-    [
-        "id" => "dahod-plumbing-services",
-        "category" => "Home Services",
-        "name" => "Dahod Plumbing Services",
-        "tag" => "Plumbing",
-        "icon" => "fa-wrench",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 9:00 AM – 7:00 PM",
-        "rating" => "4.2",
-        "reviews" => "38",
-        'services' => ['Pipe Repair', 'Leak Fixing', 'Drain Cleaning', 'Water Heater Installation'],
-        "description" => "Sample service listing for household plumbing and maintenance."
-    ],
-    [
-        "id" => "reliable-electrician-services",
-        "category" => "Home Services",
-        "name" => "Reliable Electrician Services",
-        "tag" => "Electrical Services",
-        "icon" => "fa-bolt",
-        "location" => "Dahod, Gujarat",
-        "phone" => "0000000000",
-        "hours" => "Demo hours: 9:00 AM – 7:00 PM",
-        "rating" => "4.4",
-        "reviews" => "51",
-        'services' => ['Electrical Repairs', 'Wiring Installation', 'Lighting Solutions', 'Appliance Maintenance'],
-        "description" => "Demo listing for home electrical repairs and maintenance."
-    ]
-];
+require_once __DIR__ . "/db.php";
 
-$selectedId = $_GET['id'] ?? '';
+$selectedId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 $business = null;
 
-foreach ($businesses as $item) {
-    if ($item['id'] === $selectedId) {
-        $business = $item;
-        break;
+if ($selectedId) {
+
+    $stmt = $conn->prepare("
+        SELECT b.*, c.category_name
+        FROM businesses b
+        LEFT JOIN categories c ON b.category_id = c.category_id
+        WHERE b.business_id = ? AND b.status = 'approved'
+        LIMIT 1
+    ");
+
+    $stmt->bind_param("i", $selectedId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+
+        $business = [
+            "id" => $row["business_id"],
+            "name" => $row["business_name"],
+            "category" => $row["category_name"] ?? "Other",
+            "icon" => $row["icon_class"] ?: "fa-store",
+            "tag" => $row["tag"] ?? "",
+            "location" => trim(($row["area"] ?? "") . ", " . ($row["city"] ?? "Dahod"), ", "),
+            "address" => $row["address"] ?? "",
+            "phone" => $row["phone"] ?? "",
+            "hours" => $row["opening_hours"] ?? "Contact for timings",
+            "rating" => "N/A",
+            "reviews" => 0,
+            "description" => $row["description"] ?? "",
+            "services" => []
+        ];
+
+        $serviceStmt = $conn->prepare("
+            SELECT service_name
+            FROM business_services
+            WHERE business_id = ?
+        ");
+
+        $serviceStmt->bind_param("i", $selectedId);
+        $serviceStmt->execute();
+
+        $serviceResult = $serviceStmt->get_result();
+
+        while ($service = $serviceResult->fetch_assoc()) {
+            $business["services"][] = $service["service_name"];
+        }
     }
 }
 
 $pageTitle = $business
-    ? $business['name'] . " | Dahod Nearby"
+    ? $business["name"] . " | Dahod Nearby"
     : "Business Not Found | Dahod Nearby";
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
