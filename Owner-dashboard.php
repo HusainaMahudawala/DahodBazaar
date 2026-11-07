@@ -1,28 +1,40 @@
 <?php
+session_start();
+require_once __DIR__ . "/db.php";
 $pageTitle = "Owner Dashboard | Dahod Nearby";
 
 /* Demo data until MySQL is connected */
-$businesses = [
-    [
-        "name" => "Prabhuan Restaurant",
-        "category" => "Restaurant",
-        "location" => "Dahod, Gujarat",
-        "status" => "Approved"
-    ],
-    [
-        "name" => "Dahod Family Food Corner",
-        "category" => "Restaurant",
-        "location" => "Dahod, Gujarat",
-        "status" => "Pending"
-    ],
-    [
-        "name" => "Smile Dental Care",
-        "category" => "Healthcare",
-        "location" => "Dahod, Gujarat",
-        "status" => "Approved"
-    ]
-];
+$businesses = [];
 
+if (isset($_SESSION["owner_id"])) {
+
+    $ownerId = $_SESSION["owner_id"];
+
+    $stmt = $conn->prepare("
+        SELECT b.*, c.category_name
+        FROM businesses b
+        LEFT JOIN categories c ON b.category_id = c.category_id
+        WHERE b.owner_id = ?
+        ORDER BY b.created_at DESC
+    ");
+
+    $stmt->bind_param("i", $ownerId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $businesses[] = [
+            "id" => $row["business_id"],
+            "name" => $row["business_name"],
+            "category" => $row["category_name"] ?? "Other",
+            "location" => trim(($row["area"] ?? "") . ", " . ($row["city"] ?? "Dahod"), ", "),
+            "status" => ucfirst($row["status"])
+        ];
+    }
+
+    $stmt->close();
+}
 $totalBusinesses = count($businesses);
 $approvedBusinesses = 0;
 $pendingBusinesses = 0;
@@ -44,7 +56,8 @@ foreach ($businesses as $business) {
 
     <title><?= htmlspecialchars($pageTitle) ?></title>
 
-    <link rel="stylesheet" href="./style.css?v=4">      
+    <link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="owner-admin.css?v=1">      
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
@@ -122,7 +135,7 @@ foreach ($businesses as $business) {
                     Back to Website
                 </a>
 
-                <a href="owner.php" class="owner-side-link owner-logout-link">
+                <a href="logout.php" class="owner-side-link owner-logout-link">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     Logout
                 </a>
@@ -248,13 +261,35 @@ foreach ($businesses as $business) {
                                         </span>
                                     </td>
 
-                                    <td>
-                                        <a href="business.php"
-                                           class="owner-action-link"
-                                           title="View business">
-                                            <i class="fa-regular fa-eye"></i>
-                                            View
-                                        </a>
+                          <td>
+    <div class="owner-action-group">
+
+        <a href="Business.php?id=<?= urlencode($business['id']) ?>"
+           class="owner-action-link">
+            <i class="fa-regular fa-eye"></i>
+            View
+        </a>
+
+        <a href="Edit-business.php?id=<?= urlencode($business['id']) ?>"
+           class="owner-action-link">
+            <i class="fa-solid fa-pen"></i>
+            Edit
+        </a>
+
+        <form action="delete-business.php" method="POST"
+              onsubmit="return confirm('Are you sure you want to delete this business?');">
+
+            <input type="hidden" name="business_id"
+                   value="<?= htmlspecialchars($business['id']) ?>">
+
+            <button type="submit" class="owner-action-link">
+                <i class="fa-solid fa-trash"></i>
+                Delete
+            </button>
+        </form>
+
+    </div>
+
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -262,11 +297,7 @@ foreach ($businesses as $business) {
                     </table>
                 </div>
 
-                <p class="owner-demo-note">
-                    <i class="fa-solid fa-circle-info"></i>
-                    These are sample listings. Your actual business data will appear
-                    here after database integration.
-                </p>
+                
 
             </section>
 
