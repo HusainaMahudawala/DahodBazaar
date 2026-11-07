@@ -1,5 +1,43 @@
 <?php
+session_start();
+require_once __DIR__ . "/db.php";
+
 $pageTitle = "Owner Login | Dahod Nearby";
+$loginError = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $email = trim($_POST["email"]);
+    $password = $_POST["password"];
+
+    $stmt = $conn->prepare(
+        "SELECT owner_id, password_hash FROM owners WHERE email = ?"
+    );
+
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($owner = $result->fetch_assoc()) {
+
+        if (password_verify($password, $owner["password_hash"])) {
+
+            $_SESSION["owner_id"] = $owner["owner_id"];
+
+            header("Location: Owner-dashboard.php");
+            exit();
+
+        } else {
+            $loginError = "Invalid email or password.";
+        }
+
+    } else {
+        $loginError = "Invalid email or password.";
+    }
+
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +55,8 @@ $pageTitle = "Owner Login | Dahod Nearby";
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-   <link rel="stylesheet" href="./style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="owner-admin.css?v=1">
 </head>
 
 <body>
@@ -110,7 +149,11 @@ $pageTitle = "Owner Login | Dahod Nearby";
                 <button type="submit" class="owner-login-button">
                     Log In <i class="fa-solid fa-arrow-right"></i>
                 </button>
-
+<?php if (!empty($loginError)): ?>
+    <p class="error-message">
+        <?= htmlspecialchars($loginError) ?>
+    </p>
+<?php endif; ?>
             </form>
 
             <div class="owner-login-divider">
